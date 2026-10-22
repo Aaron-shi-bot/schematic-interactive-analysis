@@ -1,0 +1,264 @@
+{
+  "circuit": "synthetic-divider-example",
+  "viewer": {
+    "title": "分压电路 · 整图模块分析",
+    "basis": "合成示例 · 解析 DC",
+    "method": "解析 DC · 理想电源与电阻",
+    "labels": {
+      "VIN": "VIN · 电源输入",
+      "OUT": "OUT · 分压输出"
+    },
+    "controls": {
+      "vin": {
+        "label": "输入电压 / V",
+        "step": 0.1,
+        "slider": [
+          0,
+          12
+        ]
+      },
+      "target": {
+        "label": "输出目标 / V",
+        "step": 0.01
+      }
+    }
+  },
+  "topology": {
+    "components": [
+      {
+        "id": "V1",
+        "value": "理想电源",
+        "pins": [
+          {
+            "pin": "1",
+            "body": [
+              100,
+              180
+            ],
+            "end": [
+              100,
+              220
+            ],
+            "net": "VIN"
+          },
+          {
+            "pin": "2",
+            "body": [
+              100,
+              180
+            ],
+            "end": [
+              100,
+              140
+            ],
+            "net": "GND"
+          }
+        ]
+      },
+      {
+        "id": "R1",
+        "value": "可调电阻",
+        "pins": [
+          {
+            "pin": "1",
+            "body": [
+              280,
+              220
+            ],
+            "end": [
+              260,
+              220
+            ],
+            "net": "VIN"
+          },
+          {
+            "pin": "2",
+            "body": [
+              320,
+              220
+            ],
+            "end": [
+              340,
+              220
+            ],
+            "net": "OUT"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "value": "可调电阻",
+        "pins": [
+          {
+            "pin": "1",
+            "body": [
+              460,
+              170
+            ],
+            "end": [
+              460,
+              190
+            ],
+            "net": "OUT"
+          },
+          {
+            "pin": "2",
+            "body": [
+              460,
+              130
+            ],
+            "end": [
+              460,
+              90
+            ],
+            "net": "GND"
+          }
+        ]
+      }
+    ],
+    "nets": {
+      "VIN": [
+        "V1.1",
+        "R1.1"
+      ],
+      "OUT": [
+        "R1.2",
+        "R2.1"
+      ],
+      "GND": [
+        "V1.2",
+        "R2.2"
+      ]
+    },
+    "wires": [
+      {
+        "id": "w1",
+        "net": "VIN",
+        "points": [
+          [
+            100,
+            220
+          ],
+          [
+            260,
+            220
+          ]
+        ]
+      },
+      {
+        "id": "w2",
+        "net": "OUT",
+        "points": [
+          [
+            340,
+            220
+          ],
+          [
+            460,
+            220
+          ],
+          [
+            460,
+            190
+          ]
+        ]
+      },
+      {
+        "id": "w3",
+        "net": "GND",
+        "points": [
+          [
+            460,
+            90
+          ],
+          [
+            100,
+            90
+          ],
+          [
+            100,
+            140
+          ]
+        ]
+      }
+    ]
+  },
+  "drawing": {
+    "bounds": [
+      0,
+      0,
+      560,
+      300
+    ],
+    "dataUri": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMzAwIj4KPHJlY3Qgd2lkdGg9IjU2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IndoaXRlIi8+CjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM1NDA1MiIgc3Ryb2tlLXdpZHRoPSIxLjUiPgo8cGF0aCBkPSJNMTAwIDgwSDI4ME0zMjAgODBINDYwVjEzME00NjAgMTcwVjIxMEgxMDBWMTYwIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEyMCIgcj0iNDAiLz48cmVjdCB4PSIyODAiIHk9IjY4IiB3aWR0aD0iNDAiIGhlaWdodD0iMjQiLz4KPHJlY3QgeD0iNDQ4IiB5PSIxMzAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0MCIvPgo8cGF0aCBkPSJNMTAwIDIxMHYxNG0tMTQgMGgyOG0tMTAgNWgtOG0yIDVoNE05MCAxMDVoMjBtLTEwLTEwdjIwbS0xMCAyM2gyMCIvPgo8L2c+PGcgZmlsbD0iIzM1NDA1MiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiPjx0ZXh0IHg9IjQ1IiB5PSIxMjQiPlYxPC90ZXh0Pjx0ZXh0IHg9IjI5MCIgeT0iNTciPlIxPC90ZXh0Pjx0ZXh0IHg9IjQ4MyIgeT0iMTU1Ij5SMjwvdGV4dD48dGV4dCB4PSIxNzAiIHk9IjcwIj5WSU48L3RleHQ+PHRleHQgeD0iMzg1IiB5PSI3MCI+T1VUPC90ZXh0PjwvZz4KPC9zdmc+"
+  },
+  "modules": {
+    "full_bounds": [
+      0,
+      0,
+      560,
+      300
+    ],
+    "modules": [
+      {
+        "id": "supply",
+        "name": "电源输入",
+        "bounds": [
+          25,
+          95,
+          160,
+          265
+        ],
+        "components": [
+          "V1"
+        ],
+        "nodes": [
+          "VIN"
+        ],
+        "function": "理想直流电源提供输入电压。",
+        "usage": "调整输入电压，查看 VIN 和 OUT 的变化。",
+        "model": "解析 DC",
+        "limitations": "合成示例；不包含电源内阻。",
+        "controls": [
+          "vin"
+        ],
+        "default_probe": "n:VIN"
+      },
+      {
+        "id": "divider",
+        "name": "分压与输出",
+        "bounds": [
+          190,
+          45,
+          530,
+          265
+        ],
+        "components": [
+          "R1",
+          "R2"
+        ],
+        "nodes": [
+          "OUT"
+        ],
+        "function": "R1 与 R2 对输入电压分压。",
+        "usage": "改变电阻或指定输出目标，反求 R2。",
+        "model": "解析 DC",
+        "limitations": "无外接负载；图上原始符号保留，当前阻值显示在参数栏。",
+        "controls": [
+          "vin"
+        ],
+        "resistors": [
+          "R1",
+          "R2"
+        ],
+        "default_probe": "n:OUT",
+        "inverse": {
+          "action": "set-output",
+          "targetKey": "target",
+          "label": "反求并应用 R2",
+          "title": "目标电压反求"
+        }
+      }
+    ]
+  }
+}

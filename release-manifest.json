@@ -1,0 +1,43 @@
+{
+  "version": "2026-10-21.1",
+  "skill": "schematic-interactive-analysis",
+  "files_sha256": {
+    ".gitignore": "d7e273e6eb2a7fcdbb0647557b984849d5730ce6d7eb2c150b8bdd8448c4a01e",
+    "README.md": "3604577a41e6cb0180861098368ed6b8909796d35602291dd07228608f55c5e1",
+    "SKILL.md": "47456eca905a3f35661b5cff5c0450718ac90a350b60e06a530d0c575b478d0a",
+    "VERSION": "73f9579852bb22b3db8b2521832ec4bc50c8b23c451d892bbeb7d8e51fef4a17",
+    "agents/openai.yaml": "145ff7435718eb695607b58516a2dead4707dca58571d5f3bfd16c013740d541",
+    "assets/canvas/canvas-drawing.js": "b27dc7a6ea28aad28da4afcaeab9abde360d30530c7dfe7bc55ce539c6ad4a88",
+    "assets/canvas/canvas-probe.js": "22e49d9b21bf18332163bdc9623dd89de0af4f7c5d6b2b25271665528372b327",
+    "assets/canvas/canvas-ui.js": "07688e63d12741b396203ebd82179548d07439279a87e199d82d0aa25f3bbb38",
+    "assets/canvas/canvas.fragment.html": "cbaa42fb054e1b842742ff432011704d57c8bb79aa39f7fbb09a4439e14a5fdc",
+    "assets/canvas/example-data.json": "6e3626a0a64ce6c860224e00d5817ce8588d73687c4193076052f4d854ffe516",
+    "assets/canvas/example-model.js": "39b83cce27e662750b149207dc2d36f0e4f28b631ce79df5d132aebafea1aad8",
+    "assets/dc-divider.example.json": "34382f091a94f9ea80405de90ecf838fee30c0388d96ec9c5c627d3275cd935d",
+    "dist/schematic-interactive-analysis.skill": "2b095be2a79512195ae0f297c5753ea6a79adfca8b2b9c7c0432d0d2c66a25f0",
+    "references/canvas-template.md": "628e6e1e1d9e07f18686fa111af80cd6d36f4eef30dbe2263e7664c9bd4c5ad0",
+    "references/input-and-topology.md": "48112aecab039bd6b3982eca20ed4df772cb647cdb24a2e868c472f3e4c4c7f0",
+    "references/modeling-and-validation.md": "517cc01343cd496a4d46f8d55d7db85eb8a5d530678f15e2e9c8127aaeffc211",
+    "references/module-canvas.md": "bd6e6c5040c855861390298d8b02bacf2ba946758f004754a4fbf51a63c877bf",
+    "references/visualization-and-review.md": "7771e7f7cdf78c9f1c7732c1dab4ee6e58aa53a32024c69426fd1514dadcf028",
+    "requirements.txt": "c49995a7107bc247a3d8baa7e4f847f87b4c7996dd62c0e8a903f6d456896acd",
+    "scripts/build_canvas.py": "fffa3324c84c8a85435a47f15e0b3650046a6ee61163e534d1a2a3d8c970a2be",
+    "scripts/check_dc.py": "b8eaa0690901586bc2148585e9be64df298fc82b62a22635973bf49585e0a3dc"
+  },
+  "included": [
+    "Reusable skill instructions",
+    "Approved canvas template",
+    "Builder and DC consistency checker",
+    "Original synthetic divider example"
+  ],
+  "validation": {
+    "installed_sources_match_archive": true,
+    "archive_crc": "PASS",
+    "canvas_template_browser": "Previously verified 2026-10-21; controls, module switching, 100-800% zoom, probes, independent scroll and responsive views",
+    "portable_package_build": "Previously verified 2026-10-21; unpacked skill builds its own synthetic example",
+    "public_bundle_utf8_links_and_private_path_check": "PASS: checked before upload",
+    "current_example_build": "PASS: generated from the prepared public repository",
+    "dc_checker_example": "PASS: standard-library checker returned status=pass"
+  },
+  "scope": "This package supplies the analysis workflow and UI template. Electrical topology and model must be verified for each input circuit."
+}

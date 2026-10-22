@@ -1,0 +1,18 @@
+{
+  "name": "generic-three-resistor-divider",
+  "analysis": "dc_operating_point",
+  "complete_network": true,
+  "reference_node": "0",
+  "nodes": {
+    "0": 0,
+    "source": 3,
+    "sensor_out": 2.896551724137931,
+    "adc": 1.8620689655172413
+  },
+  "branches": [
+    {"id": "V1", "kind": "voltage_source", "p": "source", "n": "0", "value": 3, "current": -0.000103448275862069},
+    {"id": "Rs", "kind": "resistor", "p": "source", "n": "sensor_out", "value": 1000, "current": 0.000103448275862069},
+    {"id": "R1", "kind": "resistor", "p": "sensor_out", "n": "adc", "value": 10000, "current": 0.000103448275862069},
+    {"id": "R2", "kind": "resistor", "p": "adc", "n": "0", "value": 18000, "current": 0.000103448275862069}
+  ]
+}

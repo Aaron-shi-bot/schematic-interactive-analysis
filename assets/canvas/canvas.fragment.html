@@ -1,0 +1,163 @@
+<div id="schematic-canvas-lab" data-canvas-version="2026-10-21.1">
+  <style>
+    #schematic-canvas-lab{color:var(--foreground);container-type:inline-size;display:grid;grid-template-rows:auto auto minmax(0,1fr);height:820px;min-height:0;box-sizing:border-box;overflow:hidden;border:0;border-radius:0;background:var(--background);--mw-divider:color-mix(in srgb,var(--foreground) 17%,var(--background))}
+    #schematic-canvas-lab.is-compact{height:600px}
+    #schematic-canvas-lab [hidden]{display:none!important}
+    #schematic-canvas-lab .mw-header{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:8px 106px 6px 12px}
+    #schematic-canvas-lab h3{margin:0}
+    #schematic-canvas-lab .mw-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:0 12px 8px;border-bottom:1px solid var(--mw-divider)}
+    #schematic-canvas-lab .mw-tool-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+    #schematic-canvas-lab .mw-tool-options{gap:12px}
+    #schematic-canvas-lab .mw-zoom{display:flex;align-items:center;gap:6px;padding-left:12px;border-left:1px solid var(--mw-divider)}
+    #schematic-canvas-lab #mw-zoom-value{min-width:48px;text-align:center}
+    #schematic-canvas-lab .mw-select{display:flex;align-items:center;gap:8px;min-width:230px;max-width:330px;flex:1;margin-left:auto}
+    #schematic-canvas-lab .mw-select>label{white-space:nowrap}
+    #schematic-canvas-lab .mw-select>select{min-width:0;flex:1}
+    #schematic-canvas-lab .mw-workspace{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:6px;align-items:stretch;min-height:0;min-width:0;padding:6px;overflow:hidden}
+    #schematic-canvas-lab .mw-canvas{display:grid;grid-template-rows:minmax(0,1fr) auto;min-width:0;min-height:0;overflow:hidden;border:1px solid var(--mw-divider);border-radius:8px}
+    #schematic-canvas-lab .mw-figure{position:relative;min-width:0;min-height:0;overflow:hidden}
+    #schematic-canvas-lab .mw-drawing{display:block;width:100%;height:100%;touch-action:none;user-select:none}
+    #schematic-canvas-lab .mw-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    #schematic-canvas-lab .mw-label-wrap{position:absolute;pointer-events:auto;width:max-content}
+    #schematic-canvas-lab .mw-label-wrap .btn{display:block;white-space:nowrap;max-width:none;min-width:0}
+    #schematic-canvas-lab .mw-label-leader{stroke:var(--muted-foreground);stroke-width:1;fill:none;pointer-events:none}
+    #schematic-canvas-lab .mw-label-leader.is-active{stroke:var(--viz-series-1)}
+    #schematic-canvas-lab .mw-drawing text{fill:var(--foreground);font-family:inherit;font-weight:400;pointer-events:none}
+    #schematic-canvas-lab .mw-drawing .mw-shape{stroke:var(--foreground);fill:none}
+    #schematic-canvas-lab .mw-drawing .mw-wire{stroke:var(--muted-foreground);fill:none}
+    #schematic-canvas-lab .mw-drawing .mw-active{stroke:var(--viz-series-1)}
+    #schematic-canvas-lab .mw-drawing .mw-dot{fill:var(--muted-foreground);stroke:none}
+    #schematic-canvas-lab .mw-drawing .mw-dot.mw-active{fill:var(--viz-series-1)}
+    #schematic-canvas-lab .mw-drawing .mw-hit{stroke:transparent;fill:none}
+    #schematic-canvas-lab .mw-region{stroke:var(--muted-foreground);stroke-width:1.8;stroke-dasharray:7 5;fill:transparent}
+    #schematic-canvas-lab .mw-region.is-active{stroke:var(--viz-series-1);stroke-width:2.6;fill:var(--viz-series-1);fill-opacity:.045}
+    #schematic-canvas-lab .mw-panel{display:grid;grid-template-rows:auto minmax(0,1fr);min-width:0;min-height:0;overflow:hidden;overflow-wrap:anywhere;border:1px solid var(--mw-divider);border-radius:8px}
+    #schematic-canvas-lab .mw-panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--mw-divider);background:var(--muted)}
+    #schematic-canvas-lab .mw-panel-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:6px 14px 14px}
+    #schematic-canvas-lab .mw-panel-content{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0;overflow:hidden}
+    #schematic-canvas-lab .mw-panel-content.no-probe{grid-template-rows:minmax(0,1fr)}
+    #schematic-canvas-lab .mw-probe-debug{padding:10px 14px;border-bottom:1.5px solid var(--mw-divider);display:grid;gap:6px;min-width:0}
+    #schematic-canvas-lab .mw-probe-caption{display:flex;align-items:center;gap:7px}
+    #schematic-canvas-lab .mw-probe-led{display:inline-block;width:8px;height:8px;flex:none;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px color-mix(in srgb,var(--red) 15%,transparent)}
+    #schematic-canvas-lab .mw-probe-readout{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    #schematic-canvas-lab .mw-probe-picker{display:flex;align-items:center;gap:8px;min-width:0}
+    #schematic-canvas-lab .mw-probe-picker>label{white-space:nowrap}
+    #schematic-canvas-lab .mw-probe-picker>select{min-width:0;flex:1}
+    #schematic-canvas-lab .mw-probe-terminal{display:flex;flex-wrap:wrap;gap:6px;max-height:106px;overflow-y:auto}
+    #schematic-canvas-lab .mw-drawing .mw-probe-node{fill:var(--background);stroke:var(--red);stroke-width:1.4}
+    #schematic-canvas-lab .mw-drawing .mw-probe-selected{fill:var(--red);stroke:var(--background);stroke-width:1.5}
+    #schematic-canvas-lab .mw-drawing .mw-probe-halo{fill:var(--red);fill-opacity:.18;stroke:none;pointer-events:none}
+    #schematic-canvas-lab .mw-drawing .mw-probe-tag{fill:var(--background);stroke:var(--red);stroke-width:1.2;pointer-events:none}
+    #schematic-canvas-lab .mw-drawing .mw-probe-ref{fill:var(--foreground);font-size:12px;pointer-events:none}
+    #schematic-canvas-lab .mw-canvas,#schematic-canvas-lab .mw-panel{border-width:1.5px}
+    #schematic-canvas-lab .mw-note{margin:8px 0}
+    #schematic-canvas-lab .mw-control{margin:14px 0}
+    #schematic-canvas-lab .mw-control-line{display:flex;align-items:center;gap:12px}
+    #schematic-canvas-lab .mw-control-line>:first-child{flex:1;min-width:0}
+    #schematic-canvas-lab .mw-number{width:108px;flex-shrink:0}
+    #schematic-canvas-lab .mw-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+    #schematic-canvas-lab .mw-probe{margin:12px 0;min-height:48px}
+    #schematic-canvas-lab .mw-result{margin:8px 0}
+    #schematic-canvas-lab .mw-result:empty{display:none}
+    #schematic-canvas-lab .mw-footer{display:grid;gap:2px;padding:5px 10px;border-top:1px solid var(--mw-divider);background:var(--muted);min-width:0;max-height:112px;overflow-y:auto;overscroll-behavior:contain}
+    #schematic-canvas-lab .mw-footer-meta{display:flex;flex-wrap:wrap;align-items:center;gap:3px 16px}
+    #schematic-canvas-lab .mw-footer-help{margin-left:auto}
+    #schematic-canvas-lab #mw-status{margin:0;overflow-wrap:anywhere}
+    #schematic-canvas-lab #mw-screen-status:empty{display:none}
+    #schematic-canvas-lab details{margin:14px 0}
+    #schematic-canvas-lab:fullscreen{width:100%;height:100dvh!important;border:0;border-radius:0}
+    html[data-visualize-standalone],html[data-visualize-standalone]>body{height:100%;overflow:hidden}
+    html[data-visualize-standalone] #schematic-canvas-lab{height:100%!important}
+    html[data-visualize-standalone] #schematic-canvas-lab .mw-header{padding-right:12px}
+    html[data-visualize-standalone] #mw-large{display:none}
+    @container(min-width:900px){#schematic-canvas-lab .mw-workspace.has-panel{grid-template-columns:minmax(0,1fr) clamp(310px,23cqw,370px)}}
+    @container(max-width:899px){#schematic-canvas-lab .mw-workspace.has-panel{grid-template-rows:minmax(0,1fr) minmax(0,1fr)}#schematic-canvas-lab .mw-select{max-width:none}#schematic-canvas-lab .mw-panel-content{display:block;overflow-y:auto;overscroll-behavior:contain}#schematic-canvas-lab .mw-panel-body{overflow:visible}}
+    @container(max-width:480px){#schematic-canvas-lab .mw-pair{grid-template-columns:1fr}#schematic-canvas-lab .mw-header{padding:8px 8px 6px}#schematic-canvas-lab .mw-header h3{width:100%}#schematic-canvas-lab .mw-toolbar{padding:0 8px 8px;gap:8px}#schematic-canvas-lab .mw-tool-group{gap:6px}#schematic-canvas-lab .mw-tool-options{gap:10px}#schematic-canvas-lab .mw-select{min-width:0;flex-basis:100%}#schematic-canvas-lab .mw-workspace{padding:6px;gap:6px}#schematic-canvas-lab .mw-footer-help{margin-left:0}#schematic-canvas-lab .mw-zoom{padding-left:6px;gap:2px}}
+  </style>
+  <div class="mw-header"><h3>{{TITLE}}</h3><span class="text-small" id="mw-view-basis">{{BASIS}}</span></div>
+  <div class="mw-toolbar" aria-label="原理图画布工具">
+    <div class="mw-tool-group">
+    <button class="btn btn-primary" id="mw-large" type="button" aria-pressed="true">大画布</button>
+    <button class="btn" id="mw-fullscreen" type="button" hidden>全屏</button>
+    <button class="btn" id="mw-fit" type="button">适应整图</button>
+    <div class="mw-zoom">
+    <button class="btn" id="mw-minus" type="button" aria-label="缩小原理图">−</button>
+    <output id="mw-zoom-value" class="tabular-nums" aria-live="polite">100%</output>
+    <button class="btn" id="mw-plus" type="button" aria-label="放大原理图">＋</button>
+    </div></div>
+    <div class="mw-tool-group mw-tool-options">
+    <label class="form-check"><input class="form-check-input" id="mw-show-modules" type="checkbox" checked><span class="form-check-label">模块虚线框</span></label>
+    <label class="form-check"><input class="form-check-input" id="mw-probe-mode" type="checkbox"><span class="form-check-label">节点 / 支路探针</span></label>
+    </div>
+    <div class="mw-select"><label for="mw-module-select">模块</label><select class="form-select" id="mw-module-select"><option value="">完整原理图</option></select></div>
+  </div>
+  <div class="mw-workspace">
+    <div class="mw-canvas">
+      <div class="mw-figure" role="group" aria-label="完整原理图，可拖动平移，滚轮或按钮缩放">
+        <svg class="mw-drawing" role="img" aria-label="完整原理图，虚线框表示功能模块，模块按钮展开交互分析"></svg>
+        <div class="mw-labels" aria-label="图上功能模块"></div>
+      </div>
+      <div class="mw-footer text-small" aria-label="画布状态栏">
+        <div class="mw-footer-meta"><span id="mw-selection-label">完整原理图</span><span>电压参考 {{REFERENCE}}</span><span class="mw-footer-help">拖动画布 · 滚轮缩放</span></div>
+        <div id="mw-status" aria-live="polite"></div>
+        <div id="mw-screen-status" role="status"></div>
+      </div>
+    </div>
+    <aside class="mw-panel" id="mw-panel" aria-label="所选模块分析" hidden>
+      <div class="mw-panel-heading"><h3 id="mw-module-title"></h3><button class="btn btn-ghost" id="mw-close" type="button">收起</button></div>
+      <div class="mw-panel-content">
+      <section class="mw-probe-debug" aria-label="探针调试">
+        <div class="mw-probe-caption text-small"><span class="mw-probe-led" aria-hidden="true"></span><span id="mw-probe-kind">节点探针 · 电压参考 {{REFERENCE}}</span></div>
+        <div class="mw-probe-readout" aria-live="polite"><strong id="mw-probe-title"></strong><h3 id="mw-probe-reading" class="tabular-nums"></h3></div>
+        <div id="mw-probe-value" class="text-small" aria-live="polite"></div>
+        <div id="mw-probe-terminals" class="mw-probe-terminal"></div>
+        <div class="mw-probe-picker"><label for="mw-probe-select" class="text-small">本模块探针</label><select id="mw-probe-select" class="form-select"></select></div>
+      </section>
+      <div class="mw-panel-body" role="region" aria-label="模块详情，可独立滚动">
+      <div class="text-small mw-note" id="mw-module-model"></div>
+      <p class="mw-note" id="mw-module-function"></p><p class="mw-note" id="mw-module-usage"></p><div class="text-small mw-note" id="mw-module-limit"></div>
+      <hr><div id="mw-module-controls"></div>
+      <div id="mw-zero-action" hidden><button id="mw-auto-zero" class="btn" type="button">计算校准参数</button></div>
+      <details id="mw-target-section" hidden><summary>目标电压反求</summary>
+        <label class="form-label"><span id="mw-target-label">目标值</span><input class="form-control" type="number" id="mw-target-input"></label>
+        <button id="mw-inverse" class="btn" type="button">反求并应用</button>
+      </details>
+      <div id="mw-inverse-result" class="mw-result" aria-live="polite"></div>
+      <details id="mw-edit-section" hidden><summary>本模块电阻改值</summary>
+        <div class="mw-pair"><label class="form-label">元件<select id="mw-edit-id" class="form-select"></select></label><label class="form-label">阻值 / Ω<input id="mw-edit-value" class="form-control" type="number" min="1" max="1000000" step="1"></label></div>
+      </details>
+      <div id="mw-node-values" aria-live="polite"></div>
+      </div>
+      </div>
+    </aside>
+  </div>
+</div>
+<script>
+/*MODEL*/
+</script>
+<script>
+(() => {
+ const root=document.getElementById("schematic-canvas-lab"),$=s=>root.querySelector(s),$$=s=>[...root.querySelectorAll(s)];
+ const data=/*DATA*/null;
+ const config=data.viewer,reference=config.referenceLabel||"GND",groundNets=new Set(config.groundNets||["GND"]);
+ const M=window.SchematicModel,svg=$(".mw-drawing"),NS="http://www.w3.org/2000/svg",modules=data.modules.modules;
+ const comps=Object.fromEntries(data.topology.components.map(c=>[c.id,c]));
+ const byIndex=Object.fromEntries(data.records.filter(r=>r.RECORD==="1").map(r=>[r._index,data.topology.components.find(c=>c.x==Number(r["Location.X"])&&c.y==Number(r["Location.Y"])&&c.library===r.LibReference)]));
+ const wireNet=Object.fromEntries(data.topology.wires.map(w=>[w.id,w.net]));
+ const pinList=data.topology.components.flatMap(c=>c.pins.map(p=>({...p,ref:c.id+"."+p.pin,component:c.id}))),pinByRef=Object.fromEntries(pinList.map(p=>[p.ref,p]));
+ const labels=config.labels||{},controls=config.controls||{};
+ let state=M.normalize(),ui={module:null,large:true,zoom:1,panX:0,panY:0,probe:config.defaultProbe||"",probePin:null,edit:"",showModules:true,probeMode:false},result,drag=null,dragged=false,drawPending=false;
+ const moduleOf=id=>modules.find(m=>m.id===id),selectedModule=()=>moduleOf(ui.module);
+ function fmt(v,unit="V"){if(v==null||!Number.isFinite(v))return "待建模";if(unit==="A"){if(Math.abs(v)<.001)return(v*1e6).toFixed(2)+" µA";return(v*1e3).toFixed(3)+" mA"}return v.toFixed(4)+" "+unit}
+ function ohm(v){return v>=1000?(v/1000).toFixed(v%1000?2:0)+" kΩ":v.toFixed(v%1?2:0)+" Ω"}
+ function el(type,attrs={},text){const e=document.createElementNS(NS,type);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text!=null)e.textContent=text;return e}
+ function num(r,k,d=0){return Number(r[k]??d)+Number(r[k+"_Frac"]??0)/1e5}
+ function activeNet(){return ui.module&&ui.probe.startsWith("n:")?ui.probe.slice(2):null}
+ function option(select,value,text){const o=document.createElement("option");o.value=value;o.textContent=text;select.append(o)}
+ for(const m of modules)option($("#mw-module-select"),m.id,m.number+" · "+m.name);
+ /*VIEWER_LOGIC*/
+ /*DRAW*/
+ /*PROBE*/
+ /*EVENTS*/
+})();
+</script>

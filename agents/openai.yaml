@@ -1,0 +1,4 @@
+interface:
+  display_name: "原理图交互分析"
+  short_description: "保留完整原理图，在大画布上用虚线标出功能模块，点击查看用途和电路交互分析"
+  default_prompt: "使用 $schematic-interactive-analysis 自带的已确认画布模板分析这份原理图，保留整图并标出虚线模块，点击模块打开独立滚动详情和红色探针调试，核对模型依据并标明未知项。"
